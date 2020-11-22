@@ -185,39 +185,40 @@ export function SignupLoginForm(props) {
         >
           <div className="logo"></div>
           <div className="title">Log in</div>
+          <form style={{ width: "100%" }} onSubmit={LoginUser}>
+            <div className="fields">
+              <div className="username">
+                <HumanIcon fill="#999" className="svg-icon" />
 
-          <div className="fields">
-            <div className="username">
-              <HumanIcon fill="#999" className="svg-icon" />
+                <input
+                  type="username"
+                  className="user-input"
+                  onChange={emailHandler}
+                  placeholder={email}
+                />
+              </div>
 
-              <input
-                type="username"
-                className="user-input"
-                onChange={emailHandler}
-                placeholder={email}
-              />
+              <div className="password">
+                <HumanIcon fill="#999" className="svg-icon" />
+                <input
+                  type={showPassword ? "text" : "password"}
+                  className="pass-input"
+                  placeholder={password}
+                  onChange={validatePassword}
+                />
+                <span
+                  className="toggle-password"
+                  onMouseEnter={() => showPasswordHandler(true)}
+                  onMouseLeave={() => showPasswordHandler(false)}
+                >
+                  {showPassword ? "👁️" : "👁️"}
+                </span>
+              </div>
             </div>
-
-            <div className="password">
-              <HumanIcon fill="#999" className="svg-icon" />
-              <input
-                type={showPassword ? "text" : "password"}
-                className="pass-input"
-                placeholder={password}
-                onChange={validatePassword}
-              />
-              <span
-                className="toggle-password"
-                onMouseEnter={() => showPasswordHandler(true)}
-                onMouseLeave={() => showPasswordHandler(false)}
-              >
-                {showPassword ? "👁️" : "👁️"}
-              </span>
-            </div>
-          </div>
-          <button onClick={LoginUser} className="signin-button">
-            Login
-          </button>
+            <button type="submit" onClick={LoginUser} className="signin-button">
+              Login
+            </button>
+          </form>
         </div>
 
         <div
@@ -229,65 +230,66 @@ export function SignupLoginForm(props) {
         >
           <div className="logo"></div>
           <div className="title">Sign Up</div>
+          <form style={{ width: "100%" }} onSubmit={sendDataToServer}>
+            <div className="fields">
+              <div className="username">
+                <HumanIcon fill="#999" className="svg-icon" />
 
-          <div className="fields">
-            <div className="username">
-              <HumanIcon fill="#999" className="svg-icon" />
+                <input
+                  type="username"
+                  className="user-input"
+                  onChange={emailHandler}
+                  placeholder={email}
+                />
+              </div>
 
-              <input
-                type="username"
-                className="user-input"
-                onChange={emailHandler}
-                placeholder={email}
-              />
+              <div className="password">
+                <HumanIcon fill="#999" className="svg-icon" />
+                <input
+                  type={showPassword ? "text" : "password"}
+                  className="pass-input"
+                  placeholder={password}
+                  onChange={validatePassword}
+                />
+                <span
+                  className="toggle-password"
+                  onMouseEnter={() => showPasswordHandler(true)}
+                  onMouseLeave={() => showPasswordHandler(false)}
+                >
+                  {showPassword ? "👁️" : "👁️"}
+                </span>
+              </div>
+              <PassportValidation validations={validations} />
+
+              <div className="password">
+                <HumanIcon fill="#999" className="svg-icon" />
+                <input
+                  type={showPassword ? "text" : "password"}
+                  className="pass-input"
+                  placeholder={ConPassword}
+                  onChange={ConfirmPasswordHandler}
+                />
+                <span
+                  className="toggle-password"
+                  onMouseEnter={() => showPasswordHandler(true)}
+                  onMouseLeave={() => showPasswordHandler(false)}
+                >
+                  {showPassword ? "👁️" : "👁️"}
+                </span>
+              </div>
+
+              <ImageUpload center uploadImageHandler={uploadImageHandler} />
             </div>
 
-            <div className="password">
-              <HumanIcon fill="#999" className="svg-icon" />
-              <input
-                type={showPassword ? "text" : "password"}
-                className="pass-input"
-                placeholder={password}
-                onChange={validatePassword}
-              />
-              <span
-                className="toggle-password"
-                onMouseEnter={() => showPasswordHandler(true)}
-                onMouseLeave={() => showPasswordHandler(false)}
-              >
-                {showPassword ? "👁️" : "👁️"}
-              </span>
-            </div>
-            <PassportValidation validations={validations} />
-
-            <div className="password">
-              <HumanIcon fill="#999" className="svg-icon" />
-              <input
-                type={showPassword ? "text" : "password"}
-                className="pass-input"
-                placeholder={ConPassword}
-                onChange={ConfirmPasswordHandler}
-              />
-              <span
-                className="toggle-password"
-                onMouseEnter={() => showPasswordHandler(true)}
-                onMouseLeave={() => showPasswordHandler(false)}
-              >
-                {showPassword ? "👁️" : "👁️"}
-              </span>
-            </div>
-
-            <ImageUpload center uploadImageHandler={uploadImageHandler} />
-          </div>
-
-          <button
-            type="button"
-            disabled={!matchingPasswords}
-            className="signin-button"
-            onClick={sendDataToServer}
-          >
-            Sign Up
-          </button>
+            <button
+              type="submit"
+              disabled={!matchingPasswords}
+              className="signin-button"
+              onClick={sendDataToServer}
+            >
+              Sign Up
+            </button>
+          </form>
         </div>
       </div>
     );
@@ -307,39 +309,40 @@ export function SignupLoginForm(props) {
         >
           <div className="logo"></div>
           <div className="title">Log in</div>
+          <form style={{ width: "100%" }} onSubmit={LoginUser}>
+            <div className="fields">
+              <div className="username">
+                <HumanIcon fill="#999" className="svg-icon" />
 
-          <div className="fields">
-            <div className="username">
-              <HumanIcon fill="#999" className="svg-icon" />
+                <input
+                  type="username"
+                  className="user-input"
+                  onChange={emailHandler}
+                  placeholder={email}
+                />
+              </div>
 
-              <input
-                type="username"
-                className="user-input"
-                onChange={emailHandler}
-                placeholder={email}
-              />
+              <div className="password">
+                <HumanIcon fill="#999" className="svg-icon" />
+                <input
+                  type={showPassword ? "text" : "password"}
+                  className="pass-input"
+                  placeholder={password}
+                  onChange={validatePassword}
+                />
+                <span
+                  className="toggle-password"
+                  onMouseEnter={() => showPasswordHandler(true)}
+                  onMouseLeave={() => showPasswordHandler(false)}
+                >
+                  {showPassword ? "👁️" : "👁️"}
+                </span>
+              </div>
             </div>
-
-            <div className="password">
-              <HumanIcon fill="#999" className="svg-icon" />
-              <input
-                type={showPassword ? "text" : "password"}
-                className="pass-input"
-                placeholder={password}
-                onChange={validatePassword}
-              />
-              <span
-                className="toggle-password"
-                onMouseEnter={() => showPasswordHandler(true)}
-                onMouseLeave={() => showPasswordHandler(false)}
-              >
-                {showPassword ? "👁️" : "👁️"}
-              </span>
-            </div>
-          </div>
-          <button onClick={LoginUser} className="signin-button">
-            Login
-          </button>
+            <button type="submit" onClick={LoginUser} className="signin-button">
+              Login
+            </button>
+          </form>
         </div>
 
         <div
@@ -351,65 +354,66 @@ export function SignupLoginForm(props) {
         >
           <div className="logo"></div>
           <div className="title">Sign Up</div>
+          <form style={{ width: "100%" }} onSubmit={sendDataToServer}>
+            <div className="fields">
+              <div className="username">
+                <HumanIcon fill="#999" className="svg-icon" />
 
-          <div className="fields">
-            <div className="username">
-              <HumanIcon fill="#999" className="svg-icon" />
+                <input
+                  type="username"
+                  className="user-input"
+                  onChange={emailHandler}
+                  placeholder={email}
+                />
+              </div>
 
-              <input
-                type="username"
-                className="user-input"
-                onChange={emailHandler}
-                placeholder={email}
-              />
+              <div className="password">
+                <HumanIcon fill="#999" className="svg-icon" />
+                <input
+                  type={showPassword ? "text" : "password"}
+                  className="pass-input"
+                  placeholder={password}
+                  onChange={validatePassword}
+                />
+                <span
+                  className="toggle-password"
+                  onMouseEnter={() => showPasswordHandler(true)}
+                  onMouseLeave={() => showPasswordHandler(false)}
+                >
+                  {showPassword ? "👁️" : "👁️"}
+                </span>
+              </div>
+
+              <PassportValidation validations={validations} />
+
+              <div className="password">
+                <HumanIcon fill="#999" className="svg-icon" />
+                <input
+                  type={showPassword ? "text" : "password"}
+                  className="pass-input"
+                  placeholder={ConPassword}
+                  onChange={ConfirmPasswordHandler}
+                />
+                <span
+                  className="toggle-password"
+                  onMouseEnter={() => showPasswordHandler(true)}
+                  onMouseLeave={() => showPasswordHandler(false)}
+                >
+                  {showPassword ? "👁️" : "👁️"}
+                </span>
+              </div>
+              <ImageUpload center uploadImageHandler={uploadImageHandler} />
             </div>
 
-            <div className="password">
-              <HumanIcon fill="#999" className="svg-icon" />
-              <input
-                type={showPassword ? "text" : "password"}
-                className="pass-input"
-                placeholder={password}
-                onChange={validatePassword}
-              />
-              <span
-                className="toggle-password"
-                onMouseEnter={() => showPasswordHandler(true)}
-                onMouseLeave={() => showPasswordHandler(false)}
-              >
-                {showPassword ? "👁️" : "👁️"}
-              </span>
-            </div>
-
-            <PassportValidation validations={validations} />
-
-            <div className="password">
-              <HumanIcon fill="#999" className="svg-icon" />
-              <input
-                type={showPassword ? "text" : "password"}
-                className="pass-input"
-                placeholder={ConPassword}
-                onChange={ConfirmPasswordHandler}
-              />
-              <span
-                className="toggle-password"
-                onMouseEnter={() => showPasswordHandler(true)}
-                onMouseLeave={() => showPasswordHandler(false)}
-              >
-                {showPassword ? "👁️" : "👁️"}
-              </span>
-            </div>
-            <ImageUpload center uploadImageHandler={uploadImageHandler} />
-          </div>
-
-          <button
-            type="button"
-            disabled={!matchingPasswords}
-            className="signin-button"
-            onClick={sendDataToServer}
-          >
-            Sign Up
-          </button>
+            <button
+              type="submit"
+              disabled={!matchingPasswords}
+              className="signin-button"
+              onClick={sendDataToServer}
+            >
+              Sign Up
+            </button>
+          </form>
         </div>
       </div>
     );

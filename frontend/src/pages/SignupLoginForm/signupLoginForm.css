@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   height: 100vh;
   overflow: hidden;
 }
@@ -130,9 +130,6 @@ button.ghost {
 
 .container.right-panel-active .overlay-right {
   transform: translateX(20%);
-}
-
-@media (max-width: 375px) {
 }
 
 /* to extra csss */
@@ -276,7 +273,7 @@ button.ghost {
   border-radius: 30px;
   font-size: 20px;
   font-weight: 700;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   color: #fff;
   text-align: center;
   background: #24cfaa;
@@ -328,7 +325,7 @@ ul {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     height: 100vh;
     overflow: hidden;
   }
@@ -421,7 +418,7 @@ ul {
 
   .slider:before {
     position: absolute;
-    content: '';
+    content: "";
     height: 40px;
     width: 40px;
     left: 4px;
@@ -448,7 +445,7 @@ ul {
 
   /*------ ADDED CSS ---------*/
   .slider:after {
-    content: 'Log in';
+    content: "Log in";
     color: white;
     display: block;
     position: absolute;
@@ -460,7 +457,7 @@ ul {
   }
 
   input:checked + .slider:after {
-    content: 'Sign Up';
+    content: "Sign Up";
   }
 
   /*--------- END --------*/
