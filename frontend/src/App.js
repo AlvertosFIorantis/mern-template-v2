@@ -84,3 +84,5 @@ export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));
 // me to integration test pou eftiaksa ousistika kano test an to aciton pou exei to axios API call douelvie kala kai an to redux store meso tou reduxer giente sosta updated me ta data pou peno apo to axios request
 
 // olo to test kai ta comments ine sto integrationTest.test.js file
+
+// NOTE: an thelo na vlepo to console log apo ta tests ektelo npm run test -- --silent=false adi gia npm test

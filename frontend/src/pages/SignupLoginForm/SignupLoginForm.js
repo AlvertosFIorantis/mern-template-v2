@@ -142,7 +142,8 @@ export function SignupLoginForm(props) {
 
   if (width > 550) {
     return (
-      <div className="sign-up-body">
+      // to data test eiani apla ena selector pou to xrisimopio sto test.js den eiprazei katholou to kanoniko app
+      <div className="sign-up-body" data-test="SignupLoginForm">
         <div
           className={
             showCssClasses ? "container right-panel-active" : "container"
@@ -295,7 +296,7 @@ export function SignupLoginForm(props) {
     );
   } else {
     return (
-      <div className="sign-up-body">
+      <div className="sign-up-body" data-test="SignupLoginForm">
         <label className="switch" style={{ marginTop: "10px" }}>
           <input type="checkbox" id="togBtn" onClick={addCssClassesHandler} />
           <div className="slider round"></div>
