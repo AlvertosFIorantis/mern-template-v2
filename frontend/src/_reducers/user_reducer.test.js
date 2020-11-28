@@ -111,4 +111,25 @@ describe("User Reducer", () => {
     });
     // opote tsakro an to stat mou eian iiso me to neo array pou perni meta to aciton moou pou eiani oustikai to paylaod tou action. Afto einai poli eukolo test giati oustiak exo poli aplo state gia afot to vazo undefiens giati se kateh test kano elexo gia to pos epierazaete to state meta to action opote thelo na do mono to komati tou state pou epirazete apo to action
   });
+  it("Should return new state if receiving action type of LOGOUT_USER", () => {
+    const initialState = {
+      token: null,
+      errorMessage: null,
+      userId: null,
+      first_login_verify: false,
+      image: null,
+    };
+
+    const newState = user(initialState, {
+      type: LOGOUT_USER,
+    });
+    expect(newState).toEqual({
+      token: undefined,
+      errorMessage: null,
+      userId: null,
+      first_login_verify: false,
+      image: null,
+    });
+    // opote tsakro an to stat mou eian iiso me to neo array pou perni meta to aciton moou pou eiani oustikai to paylaod tou action. Afto einai poli eukolo test giati oustiak exo poli aplo state gia afot to vazo undefiens giati se kateh test kano elexo gia to pos epierazaete to state meta to action opote thelo na do mono to komati tou state pou epirazete apo to action
+  });
 });
