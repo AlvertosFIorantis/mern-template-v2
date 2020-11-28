@@ -1,33 +1,33 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from "react";
 
-import Logout from './pages/logout/Logout'
-import HomePage from './pages/dummy_pages/HomePage'
-import SignupLoginForm from './pages/SignupLoginForm/SignupLoginForm'
-import { Route, Switch } from 'react-router-dom'
-import { connect } from 'react-redux'
+import Logout from "./pages/logout/Logout";
+import HomePage from "./pages/dummy_pages/HomePage";
+import SignupLoginForm from "./pages/SignupLoginForm/SignupLoginForm";
+import { Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
 // to wihtRouter to thelo gia na exo access sto props.history kai na boro na to peraso san aargumetn sto action !!!
-import { withRouter } from 'react-router-dom'
+import { withRouter } from "react-router-dom";
 
 //kan import ena test page gia na dokimaso to protected route sto frontend afto den exi na kani me to backedn apla thelo na do an boro sto fornted na pao se afto to route mono an exo token ola ta data ta pernoa etsi kai alios apo to bakcend afto eini gia na einai pio oreo to expriense tou user osta na tou leo na kanei login an dne exei token gia na paei se sigkriemeno route
-import user_test_page from './pages/dummy_pages/user_test_page'
+import user_test_page from "./pages/dummy_pages/user_test_page";
 //kano improt to helper function pou exo ftiaksi gia to functionaltiy pou thelo
 
-import auth_check from './util/auth_check'
-import Navbar from './pages/navbar/Navbar'
+import auth_check from "./util/auth_check";
+import Navbar from "./pages/navbar/Navbar";
 
 // Kano import to action gia na boro na kano refresh to token apo to local storage
-import { loginToken } from './_actions/actions/Users/loginToken'
+import { loginToken } from "./_actions/actions/Users/loginToken";
 
 function App(props) {
   // Function to check from logal storage if the user is autheticated
   const checkAuthenticated = () => {
-    console.log('running login action')
-    props.loginToken(props.history)
-  }
+    console.log("running login action");
+    props.loginToken(props.history);
+  };
 
   useEffect(() => {
-    checkAuthenticated()
-  }, [])
+    checkAuthenticated();
+  }, []);
 
   return (
     <div className="App">
@@ -45,24 +45,30 @@ function App(props) {
           <Route exact path="/test" component={auth_check(user_test_page)} />
           <Route exact path="/logout" component={auth_check(Logout)} />
           {/* <Route exact path="/test" component={user_test_page} /> */}
-          <Route path="*" component={() => '404 NOT FOUND'} />
+          <Route path="*" component={() => "404 NOT FOUND"} />
         </Switch>
       </div>
     </div>
-  )
+  );
 }
 
 const mapStateToProps = (state) => {
   return {
     token: state.user.token,
-  }
-}
+  };
+};
 
 const mapDispatchToProps = {
   loginToken: loginToken,
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App))
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));
 
 // xriazete na valo to withRouter gian axpo prosvasi sto props.history oste na to peraso sto action loginToken gia na kano verify to token apo to local storage
 // kai na boron na to kano push,histoty gia na alkos URL kai component otan akno load to app gia proti fora kai exo token sto local storage
+
+// // POLI SIMADIKO AN EXO GIT KAI EXO KANI COMMIT TA TESTS PRIN TO COMMIT DNE THA FENDOE STO CONSOLOE OTAN TREXO TA TEsTS GIATI TO JEST PISTEVI OTI AN TA EKAN COMMIT SIMEI OTI EXOUN EPRASI KAI DEN ME NEDIAFEROUN TORA an thelo na ta treekso ola pata a argumetn sto consoleo peristoera sto video https://www.youtube.com/watch?v=tYMLXpOJtng&list=PL-Db3tEF6pB8Am-IhCRgyGSxTalkDpUV_&index=2 sto 58:00 lepto
+
+// // an exo ftiaksi to app mou me to npx create-reacta-app . tote to mono pou exo na kano gia na kano setup to enzyme na doulepsi me to react einai na pao sto ./src folder kai na ftiakso ena file pou to lene setupTests.js
+
+// adi na psaxno gia classes pou eina iapolita sosto boro na peraso sto compoents mou kanonika emsa sto react ena property pou legete data-test kai me afto to tropo afto tha psaxno mesa sto test opote kai na alakso to onoma tou class dne tha xalazei to functionality tou test apla adi na psaxno gia class mesa sto stest tha psaxno me findByTestAtrr gia apradigka gia to data-test pou exo sto header componet sot test tha psakso gia const wrapper = findByTestAtrr(component, 'headerComponent');
