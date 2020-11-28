@@ -72,3 +72,15 @@ export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));
 // // an exo ftiaksi to app mou me to npx create-reacta-app . tote to mono pou exo na kano gia na kano setup to enzyme na doulepsi me to react einai na pao sto ./src folder kai na ftiakso ena file pou to lene setupTests.js
 
 // adi na psaxno gia classes pou eina iapolita sosto boro na peraso sto compoents mou kanonika emsa sto react ena property pou legete data-test kai me afto to tropo afto tha psaxno mesa sto test opote kai na alakso to onoma tou class dne tha xalazei to functionality tou test apla adi na psaxno gia class mesa sto stest tha psaxno me findByTestAtrr gia apradigka gia to data-test pou exo sto header componet sot test tha psakso gia const wrapper = findByTestAtrr(component, 'headerComponent');
+
+// xxxxxxxxxxxxxxxxx integration test xxxxxxxxxxxxxxxxxx
+
+// edo grafo ta to integration test gia na veveotho oti to action o reducer kai to redux store ola enonode sosta kai doulevoun. Gia na kano to integration test prepei na ftiakso ena test store idio me afto pou exo sto createStore.js gia afto kai to exo vali se ksexoristo export oste na boro na to xrisimopio sto test mou. Episeis pao sto Utils folder kai ftiaxno ena function pou to leo testStore kai afto tha xrisimoios gia to test. Boro na pao sto 42:30 leptop tou video me ta 58 lepta gia na do to adistixo apospasma. Epidi afto to test afora polla pragrmata opos ta action to reduxs store kai ta reducers den exei logiki na to valo mesa se ena sigkekrimeno folder opos vazo ola ta ala tests mesa sto folder tou component pou kanoun test gia afto kai dimiourgo ena neo folder pou to leo integration tests
+
+// epidi xrisimopio to axios xriazete na kano install ena acoma development depdenzie pou legete moxios kai o logos einai gia na boro na kano mock to respond pou tha eperna apo enan ipotithemeno server an xrisimopoiousa to axios
+
+// npm install --save-dev moxios
+
+// me to integration test pou eftiaksa ousistika kano test an to aciton pou exei to axios API call douelvie kala kai an to redux store meso tou reduxer giente sosta updated me ta data pou peno apo to axios request
+
+// olo to test kai ta comments ine sto integrationTest.test.js file
