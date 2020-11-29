@@ -20,7 +20,7 @@ function Modal(props) {
     <>
       <div style={OVERLAY_STYLES} onClick={onClose} />
       <div className="MODAL_STYLES">
-        <h1>test</h1>
+        <h1>Add a product</h1>
         <form className="product__form">
           <div className="inputGroup inputGroup1">
             <input className="inputGroup__textfield" placeholder="Company" />
