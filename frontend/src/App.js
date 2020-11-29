@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import Logout from "./pages/logout/Logout";
 import HomePage from "./pages/dummy_pages/HomePage";
 import SignupLoginForm from "./pages/SignupLoginForm/SignupLoginForm";
+import Dashboard from "./pages/Dashboard/Dashboard";
 import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 // to wihtRouter to thelo gia na exo access sto props.history kai na boro na to peraso san aargumetn sto action !!!
@@ -44,6 +45,7 @@ function App(props) {
 
           <Route exact path="/test" component={auth_check(user_test_page)} />
           <Route exact path="/logout" component={auth_check(Logout)} />
+          <Route exact path="/dashboard" component={auth_check(Dashboard)} />
           {/* <Route exact path="/test" component={user_test_page} /> */}
           <Route path="*" component={() => "404 NOT FOUND"} />
         </Switch>
