@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Dashboard.css";
 import Settings from "../../icons/Settings";
 import PlusSign from "../../icons/PlusSign";
 import ProjectComponent from "../../components/ProjectComponent/ProjectComponent";
+import Modal from "../../components/Modal/Modal";
 
 function Dashboard() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const onClosingModalHandler = () => {
+    setIsOpen((prev) => !prev);
+  };
   return (
     <div className="wrapper">
+      <Modal open={isOpen} onClose={onClosingModalHandler} />
       <section className="section">
         <header className="section__header">
           <h2 className="section__title">Projects</h2>
@@ -22,6 +29,7 @@ function Dashboard() {
               className="section__button section__button--painted focus--box-shadow"
               type="button"
               aria-label="Add New project"
+              onClick={onClosingModalHandler}
             >
               <PlusSign />
             </button>

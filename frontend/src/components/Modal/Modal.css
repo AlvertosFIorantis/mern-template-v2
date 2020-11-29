@@ -1,0 +1,19 @@
+.MODAL_STYLES {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  background: #fff;
+  padding: 50px;
+  z-index: 1000;
+  animation-name: modal_animation;
+  animation-duration: 1s;
+}
+
+@keyframes modal_animation {
+  from {
+    transform: translateY(-100vh);
+  }
+  to {
+    transform: translateY(0vh);
+  }
+}
