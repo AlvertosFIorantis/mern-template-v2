@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Dashboard.css";
-import Settings from "../../icons/Settings";
 import PlusSign from "../../icons/PlusSign";
 import ProjectComponent from "../../components/ProjectComponent/ProjectComponent";
 import Modal from "../../components/Modal/Modal";
@@ -18,13 +17,6 @@ function Dashboard() {
         <header className="section__header">
           <h2 className="section__title">Projects</h2>
           <div className="section__control">
-            <button
-              className="section__button focus--box-shadow"
-              type="button"
-              aria-label="Filter projects"
-            >
-              <Settings />
-            </button>
             <button
               className="section__button section__button--painted focus--box-shadow"
               type="button"
