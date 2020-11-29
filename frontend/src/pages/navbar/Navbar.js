@@ -6,6 +6,7 @@ import { FaHome } from "react-icons/fa";
 import { FaUserAltSlash } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { NavLink } from "react-router-dom";
+import Settings from "../../icons/Settings";
 // afto eiani arketa xrisimo an thelo na xrisimopiso diafora icons se diaforetika komatiao tou app mou kai thelo pada na exoun to idio megethos kai xroma KAI meta kano wrap to main compoonmet mou edo eiani to div class sto componet app mias kai ola ta ala componet tha einai mesa se afto
 
 export default function Navbar() {
@@ -36,8 +37,8 @@ export default function Navbar() {
           </li>
           <li className="nav-item">
             <NavLink to="/dashboard" exact className="nav-link">
-              <MdPerson />
-
+              <Settings className="nav-link-icons" />
+              {/* apo ti stigmi pou xrisimopio custom svg gia icon prepei na peraos to idio class pou exo iconContexProvider kai afora ola ta ala icons pou exo kanei import apo to react-icon */}
               <span className="link-text">dashboard</span>
             </NavLink>
           </li>
