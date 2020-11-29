@@ -20,8 +20,47 @@ function Modal(props) {
     <>
       <div style={OVERLAY_STYLES} onClick={onClose} />
       <div className="MODAL_STYLES">
-        <button onClick={onClose}>Close Modal</button>
         <h1>test</h1>
+        <form className="product__form">
+          <div className="inputGroup inputGroup1">
+            <input className="inputGroup__textfield" placeholder="Company" />
+          </div>
+          <div className="inputGroup inputGroup2">
+            <input className="inputGroup__textfield" placeholder="Company" />
+          </div>
+          <div className="inputGroup inputGroup3">
+            <select
+              className="inputGroup__textfield_dropdown"
+              placeholder="Company"
+            >
+              <option value="published">published</option>
+              <option value="in-work">in-work</option>
+            </select>
+          </div>
+          <div className="inputGroup inputGroup4">
+            <select
+              className="inputGroup__textfield_dropdown"
+              placeholder="Company"
+            >
+              <option value="external-project">external-project</option>
+              <option value="internal-project">internal-project</option>
+            </select>
+          </div>
+          <div class="inputGroup inputGroup5">
+            <button type="submit" className="product__create__button">
+              Create
+            </button>
+          </div>
+          <div class="inputGroup inputGroup6">
+            <button
+              onClick={onClose}
+              type="button"
+              className="close_modal_button"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
       </div>
     </>,
     // exo fitaksi ena neo id me dive sto public folder sto index.html
