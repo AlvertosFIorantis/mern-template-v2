@@ -6,6 +6,8 @@ const checkAuth = require("../middleware/check-auth");
 
 const createProject = require("../controlers/Projects/createProject");
 
+const getProjects = require("../controlers/Projects/getProjects");
+
 const router = express.Router();
 
 router.post(
@@ -15,5 +17,7 @@ router.post(
   checkAuth,
   createProject
 );
+
+router.get("/myprojects", checkAuth, getProjects);
 
 module.exports = router;
