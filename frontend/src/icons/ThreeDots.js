@@ -6,7 +6,7 @@ function ThreeDots(props) {
       className={props.className}
       fill={props.fill}
       viewBox={props.view_Box}
-      enable-background={props.enable_background}
+      enableBackground={props.enable_background}
       height={props.svg_height}
       width={props.svg_width}
     >

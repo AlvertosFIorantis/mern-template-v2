@@ -14,40 +14,64 @@ const OVERLAY_STYLES = {
 };
 
 function Modal(props) {
-  const { open, onClose } = props;
+  const {
+    open,
+    onClose,
+    projectCategory,
+    projectName,
+    projectStatus,
+    ProjectNameHandler,
+    PprojectStatusHandler,
+    ProjectCategoryHandler,
+    createProjectHandler,
+  } = props;
+
   if (!open) return null;
   return ReactDom.createPortal(
     <>
       <div style={OVERLAY_STYLES} onClick={onClose} />
       <div className="MODAL_STYLES">
         <h1>Add a product</h1>
-        <form className="product__form">
+        <form className="product__form" onSubmit={createProjectHandler}>
           <div className="inputGroup inputGroup1">
-            <input className="inputGroup__textfield" placeholder="Company" />
+            <label>Project Name</label>
+            <input
+              className="inputGroup__textfield"
+              placeholder={projectName}
+              onChange={ProjectNameHandler}
+            />
           </div>
-          <div className="inputGroup inputGroup2">
+          {/* <div className="inputGroup inputGroup2">
             <input className="inputGroup__textfield" placeholder="Company" />
-          </div>
+          </div> */}
           <div className="inputGroup inputGroup3">
+            <label>Project Status</label>
             <select
               className="inputGroup__textfield_dropdown"
-              placeholder="Company"
+              value={projectStatus}
+              onChange={PprojectStatusHandler}
             >
               <option value="published">published</option>
               <option value="in-work">in-work</option>
             </select>
           </div>
           <div className="inputGroup inputGroup4">
+            <label>Project Category</label>
             <select
               className="inputGroup__textfield_dropdown"
-              placeholder="Company"
+              value={projectCategory}
+              onChange={ProjectCategoryHandler}
             >
               <option value="external-project">external-project</option>
               <option value="internal-project">internal-project</option>
             </select>
           </div>
           <div class="inputGroup inputGroup5">
-            <button type="submit" className="product__create__button">
+            <button
+              type="submit"
+              onClick={createProjectHandler}
+              className="product__create__button"
+            >
               Create
             </button>
           </div>

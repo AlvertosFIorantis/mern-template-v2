@@ -7,12 +7,47 @@ import Modal from "../../components/Modal/Modal";
 function Dashboard() {
   const [isOpen, setIsOpen] = useState(false);
 
+  //starte for the inputs on the modal
+  const [projectCategory, setProjectCategory] = useState("internal-project");
+
+  const [projectName, setProjectName] = useState("project Name");
+
+  const [projectStatus, setProjectStatus] = useState("in-work");
+
+  const ProjectNameHandler = (e) => {
+    setProjectName(e.target.value);
+  };
+
+  const PprojectStatusHandler = (e) => {
+    setProjectStatus(e.target.value);
+  };
+
+  const ProjectCategoryHandler = (e) => {
+    setProjectCategory(e.target.value);
+  };
+
   const onClosingModalHandler = () => {
     setIsOpen((prev) => !prev);
   };
+
+  const createProjectHandler = (event) => {
+    event.preventDefault();
+    console.log(projectCategory, projectStatus, projectName);
+  };
+
   return (
     <div className="wrapper">
-      <Modal open={isOpen} onClose={onClosingModalHandler} />
+      <Modal
+        open={isOpen}
+        onClose={onClosingModalHandler}
+        projectCategory={projectCategory}
+        projectName={projectName}
+        projectStatus={projectStatus}
+        ProjectNameHandler={ProjectNameHandler}
+        PprojectStatusHandler={PprojectStatusHandler}
+        ProjectCategoryHandler={ProjectCategoryHandler}
+        createProjectHandler={createProjectHandler}
+      />
       <section className="section">
         <header className="section__header">
           <h2 className="section__title">Projects</h2>

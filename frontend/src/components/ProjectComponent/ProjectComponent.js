@@ -19,9 +19,9 @@ function ProjectComponent(props) {
               </div>
             </div>
           ) : (
-            <div class="project__element project__icon">
+            <div className="project__element project__icon">
               <div
-                class="icon icon--rajah"
+                className="icon icon--rajah"
                 aria-label="Icon for the project 'Book cover design'"
               >
                 <BookCover />
