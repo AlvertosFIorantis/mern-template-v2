@@ -1,51 +1,54 @@
 //thelo na exo ksexoristo file gia to APP kai to index.js gia na boro na to kano export to "app" kai na boron a to xrisimopio stat tests mou sto app.js file tha exo ola ta komatia pou tha eixa sto index js kai aforoun to app diladi ola ta middleware pou kano aapply ola gia to cross origin ola gia to body parrser ola ta routes ta pada to mono pou tha kano sto index.js file einai na kano import to app.js na tou kano connect sto mongo db kai na kano listen se port gia na trexei to app
-const express = require('express')
-const bodyParser = require('body-parser')
-const fs = require('fs')
-const path = require('path')
+const express = require("express");
+const bodyParser = require("body-parser");
+const fs = require("fs");
+const path = require("path");
 //kano import to custom Error class pou exo ftiaksi
-const HttpError = require('./error/http-error')
+const HttpError = require("./error/http-error");
 //kano import ta subrouts gia ta user
-const usersRoutes = require('./routes/users-routes')
-const itemsRoutes = require('./routes/item-routes')
-const cors = require('cors')
+const usersRoutes = require("./routes/users-routes");
+const itemsRoutes = require("./routes/item-routes");
+const projectRoutes = require("./routes/project-routes");
+const cors = require("cors");
 
-const app = express()
-app.use(cors())
+const app = express();
+app.use(cors());
 
 // vazo to body parser gia na boro na kano parse incoming data pada to proto middleware
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 // gia na boro na stelno apo to react edoles
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept, Authorization',
-  )
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE')
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
 
-  next()
-})
+  next();
+});
 
 // gia na boro na kano serve images kia preiep mesa sto static na kano specify to folder pou kano store ta images edo gia pradima einai to upload/images kai to kano me to join gia afto exo "Uplaods"+"images". Otan pao sto url locallhsot5000/upload/images tha boro na to ta files pou exo ekei mesa opote an valo to onoma kapiou file tha boron a to paro apo to server. To provlima me afto einai oti den exo secrurity kai etsi opios exei to url gia ena image bori NA TO DEI !!! Opote kalo einai na do pos boro na kano oste na kano serve statically ena image ala na to vlepei mono aftos pou prepei
-app.use('/uploads/images', express.static(path.join('uploads', 'images')))
+app.use("/uploads/images", express.static(path.join("uploads", "images")));
 
 // ara tora ekana apply ola ta middleware pou exo grapsi sto items-routes kai afta tah etktelesthoun otan pao se ena apo ola ta urls pou exo kani specify se afto to file
-app.use('/api/items', itemsRoutes)
+app.use("/api/items", itemsRoutes);
 // epidi thelo afta ta middlware s na doulevoun mono otan pao sto /api/items/... route kai meta oti thelo kai tha ektelstoun ta ipolipa routes pou exo prepei na kano specify to path sto app.use an gia pardigma sto itemsroutes exo ena / path tote afto tha ektelesthi otan pao sto api/items/
 
 //to kirio route gia na pao se ola ta subroutes pou exou na kanoun me ta users
-app.use('/api/users', usersRoutes)
+app.use("/api/users", usersRoutes);
 
+// ftiaxno ena diko mou endopoint gia na ta projects Routes
+app.use("/api/projects", projectRoutes);
 //############################
 //gia test dimiourgo ena protected route
-const checkAuth = require('./middleware/check-auth')
+const checkAuth = require("./middleware/check-auth");
 // XRISIMOPIO TO AUTH MIDDLWARE POU EFTIAKSA GIA NA KANO PROTECT TA ROTES POU EINAI APO EDO KAI KATO ARA AN ENA ROUTE EIAN IAPO EDO KAI KATO O USER PREEIN A EIAN ISIGN IN GIA NA PAEI !!!!!!!!!!!
-app.use(checkAuth)
-app.get('/test_protected_route', (req, res) => {
-  return res.json({ message: 'protected route' })
-})
+app.use(checkAuth);
+app.get("/test_protected_route", (req, res) => {
+  return res.json({ message: "protected route" });
+});
 //###########################
 
 //#####################################
@@ -53,9 +56,9 @@ app.get('/test_protected_route', (req, res) => {
 //to telefteo route pou exo afto prepei na bei kato kato ara ola ta ala routes pou tha exo tha ta valo pano apo afto ! edo pera apla vazo afto to route se periptosi pou paro URL pou den iparxei na giriso error sto user oti afto to url den iparxi
 
 app.use((req, res, next) => {
-  const error = new HttpError("couldn't find this route", 404)
-  throw error
-})
+  const error = new HttpError("couldn't find this route", 404);
+  throw error;
+});
 
 //#####################################
 
@@ -72,19 +75,19 @@ app.use((error, req, res, next) => {
   //to req.file to exo epidi xrisimopio multer genika den eiparxi sto request
   if (req.file) {
     fs.unlink(req.file.path, (err) => {
-      console.log(err)
-    })
+      console.log(err);
+    });
   }
   // tsekaro an exo idi stilei to respeond kai an afto exi gini tote apla kano forward to error (Boro na stilo mono ena response opote kati exo kain kai idi exo stili respons pithatnotata xoris na prepei)
   if (res.headerSent) {
-    return next(error)
+    return next(error);
   }
   //   tsekaro an exo idi kanei specify to status code gia to repsonse an den to exo kanei tha stilo ena geniko status code oti iparxi provlima kai afto einai 500
-  res.status(error.code || 500)
+  res.status(error.code || 500);
   //   thelo na stilo piso to error message pou ekana define otan ekana throw to error se ena apo ta middlware kai an den to exo kanei specify ekei tote na stilo an unkonw erorr
-  res.json({ message: error.message || 'an unknown error' })
-})
+  res.json({ message: error.message || "an unknown error" });
+});
 // SIMADIKO PADA KANO THROW ERROR  me to neo mou class i kalitera na exo async function an kano new ERROR me to neo mou eror class kai meta na kano return next(to_instnace_error_pou_Eftiksa)
 
 // kano export to app mou gia na boro na to xrisimopiso sta tets  kai sto index.js gian a boro na trexo to server mou !
-module.exports = app
+module.exports = app;
