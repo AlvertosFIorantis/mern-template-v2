@@ -58,6 +58,7 @@ function ProjectComponent(props) {
             <button
               className="setting setting--rotate focus--box-shadow"
               type="button"
+              onClick={() => props.deleteProjectHandler(props.project_id)}
             >
               <ThreeDots
                 view_Box="0 0 515.555 515.555"

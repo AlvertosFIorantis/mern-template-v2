@@ -42,6 +42,8 @@ export default function (state = initialState, action) {
     case AUTH_FAILED:
       return { ...state, errorMessage: action.payload.message };
     case LOGOUT_USER:
+      // remove item from local storage in additon on updating the redux store isos exei logiki afistixa na kano setupu to token edo pera otan kano login adi gia to action opos exo tora sto loinAction.js
+      localStorage.removeItem("token");
       return { ...state, token: action.payload };
     default:
       console.log("reducer");

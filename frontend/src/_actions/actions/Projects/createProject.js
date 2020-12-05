@@ -4,6 +4,8 @@ import {
   CREATE_PROJECT,
 } from "../../constants/ProjectConstants/project_constants";
 
+// an kapia fora den vlepo na dimiourgit item me to modal einai giati vazo mikro onoma sto project kai den exo kanei setup na pernei error otan simveni afto gia na dimiourgiso item thelo toulaxisotn 6 characters long name
+
 export const createProject = (dataFromComponent) => async (dispatch) => {
   // edo vazo to logic pou thelo na ekteleite sto async request gia paradigma an thelo na alakso kati apo ta data pou perno apo to api peso ti gia pradigma ot iperno kati data apo to backend kai thelo na ta peraso san payload gia paradgiam exo token apo to logged in user
   try {

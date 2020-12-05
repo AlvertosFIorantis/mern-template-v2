@@ -6,6 +6,7 @@ import Modal from "../../components/Modal/Modal";
 import { connect } from "react-redux";
 import { GetMyProjects } from "../../_actions/actions/Projects/GetMyProjects";
 import { createProject } from "../../_actions/actions/Projects/createProject";
+import { deleteProject } from "../../_actions/actions/Projects/deleteProject";
 
 function Dashboard(props) {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,6 +52,11 @@ function Dashboard(props) {
     props.GetMyProjects();
   }, []);
 
+  const deleteProjectHandler = (projectId) => {
+    console.log("Project id that i want to delete:...", projectId);
+    props.deleteProject(projectId);
+  };
+
   return (
     <div className="wrapper">
       <Modal
@@ -79,24 +85,13 @@ function Dashboard(props) {
           </div>
         </header>
         <ul className="project">
-          <ProjectComponent
-            projectCategory="external-project"
-            date="05 May, 2020"
-            projectName="Product presentation"
-            projectStatus="published"
-          />
-          <ProjectComponent
-            projectCategory="internal-project"
-            date="1 January 2020"
-            projectName="Internal project"
-            projectStatus="published"
-          />
-          <ProjectComponent
+          {/* afto to thelo mono an dne doulevei to backend kai thelo na do pos fenode */}
+          {/* <ProjectComponent
             projectCategory="external-project"
             date="1 February 2020"
             projectName="To diko mou to project"
             projectStatus="in-work"
-          />
+          /> */}
           {/* ta projects apo edo kai pano boro na ta diagrapso  */}
           {props.projects.map((project) => {
             return (
@@ -105,6 +100,10 @@ function Dashboard(props) {
                 date="1 February 2020"
                 projectName={project.projectName}
                 projectStatus={project.projectStatus}
+                // afta ta 2 props ta thelo gia na kano delete to project
+                project_id={project._id}
+                deleteProjectHandler={deleteProjectHandler}
+                key={project._id}
               />
             );
           })}
@@ -123,6 +122,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   GetMyProjects: GetMyProjects,
   createProject: createProject,
+  deleteProject: deleteProject,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
