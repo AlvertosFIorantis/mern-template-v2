@@ -5,6 +5,7 @@ import ProjectComponent from "../../components/ProjectComponent/ProjectComponent
 import Modal from "../../components/Modal/Modal";
 import { connect } from "react-redux";
 import { GetMyProjects } from "../../_actions/actions/Projects/GetMyProjects";
+import { createProject } from "../../_actions/actions/Projects/createProject";
 
 function Dashboard(props) {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +35,16 @@ function Dashboard(props) {
 
   const createProjectHandler = (event) => {
     event.preventDefault();
-    console.log(projectCategory, projectStatus, projectName);
+    // Npomizo epidi sto action createProkect sot reucer kano append to neo project pou kano create pou to perno piso apo to api ara ginete update to prokects props pou exo sto mapsStaetToProps nomizo aftmata otan alazi to props ginete re-render to compponet i apla epidi to prosp tora exei ena akoma array den ginete re-render to componet gia na kalaesi to myPRojects actions pou exo sto use effect apla ginete display to extra prokect pou iparxei tora sto prosp.projects pou kano map kai kano display ta data
+    props.createProject(
+      JSON.stringify({
+        projectCategory: projectCategory,
+        projectName: projectName,
+        projectStatus: projectStatus,
+      })
+    );
+    // klino to modal isos prepei na kano kati pio sofisticated na valo ena settimout na vazo ena loader gia na prolava na paro ta data apo to api prin  kliso to componetne den kseor an to create post epieidi exie async await perimein na paro ta data apo to server prin ektelesi to apo kano function pou eina ito onClosingmodalHalder kai epid
+    onClosingModalHandler();
   };
 
   useEffect(() => {
@@ -112,6 +122,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   GetMyProjects: GetMyProjects,
+  createProject: createProject,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
