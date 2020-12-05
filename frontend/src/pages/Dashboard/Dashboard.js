@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Dashboard.css";
 import PlusSign from "../../icons/PlusSign";
 import ProjectComponent from "../../components/ProjectComponent/ProjectComponent";
 import Modal from "../../components/Modal/Modal";
+import { connect } from "react-redux";
+import { GetMyProjects } from "../../_actions/actions/Projects/GetMyProjects";
 
-function Dashboard() {
+function Dashboard(props) {
   const [isOpen, setIsOpen] = useState(false);
 
   //starte for the inputs on the modal
@@ -34,6 +36,10 @@ function Dashboard() {
     event.preventDefault();
     console.log(projectCategory, projectStatus, projectName);
   };
+
+  useEffect(() => {
+    props.GetMyProjects();
+  }, []);
 
   return (
     <div className="wrapper">
@@ -87,4 +93,14 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+const mapStateToProps = (state) => {
+  return {
+    token: state.project.projects,
+  };
+};
+
+const mapDispatchToProps = {
+  GetMyProjects: GetMyProjects,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

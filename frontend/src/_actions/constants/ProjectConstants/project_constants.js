@@ -1,0 +1,2 @@
+export const GET_MY_PROJECTS = "GET_MY_PROJECTS";
+export const PROJECTS_FAILED = "PROJECTS_FAILED";
