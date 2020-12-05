@@ -87,6 +87,17 @@ function Dashboard(props) {
             projectName="To diko mou to project"
             projectStatus="in-work"
           />
+          {/* ta projects apo edo kai pano boro na ta diagrapso  */}
+          {props.projects.map((project) => {
+            return (
+              <ProjectComponent
+                projectCategory={project.projectCategory}
+                date="1 February 2020"
+                projectName={project.projectName}
+                projectStatus={project.projectStatus}
+              />
+            );
+          })}
         </ul>
       </section>
     </div>
@@ -95,7 +106,7 @@ function Dashboard(props) {
 
 const mapStateToProps = (state) => {
   return {
-    token: state.project.projects,
+    projects: state.project.projects,
   };
 };
 
