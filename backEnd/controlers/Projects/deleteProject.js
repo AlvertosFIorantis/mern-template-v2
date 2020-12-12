@@ -2,6 +2,9 @@ const HttpError = require("../../error/http-error");
 
 const Project = require("../../models/project");
 
+// afto to exo gia to Redis
+const { del } = require("../../redis_config");
+
 const deleteProject = async (req, res, next) => {
   // to perno apo to req.params giati to id einai sto url to projectId pou leo to exo giati sto route exo /:projectid
   const projectId = req.params.projectid;
@@ -43,6 +46,12 @@ const deleteProject = async (req, res, next) => {
     );
     return next(error);
   }
+
+  // Redisxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  const userId = req.userData.userId;
+  const key_reids = userId.concat("groupby");
+  await del(key_reids);
+  // Redisxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
   res.status(200).json({ message: "Deleted project." });
 };

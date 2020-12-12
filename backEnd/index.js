@@ -45,4 +45,4 @@ mongoose
 
 // docker run -d --name some-redis -p 6379:6379 redis
 
-// an theolo na aferso to redis diagrafo to redis_config file kai meta edo pera vgazo to import statement kai ta 2 client.on episeis prepei na afereso kai olo to logic gia to redis prosto paron to exo tora mono sto getProjectsGroupByStatement
+// an theolo na aferso to redis diagrafo to redis_config file kai meta edo pera vgazo to import statement kai ta 2 client.on episeis prepei na afereso kai olo to logic gia to redis prosto paron to exo tora mono sto getProjectsGroupByStatement, kai sto delete projects kai create project exo logic pou prepei na afereso

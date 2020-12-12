@@ -5,6 +5,11 @@ const HttpError = require("../../error/http-error");
 const User = require("../../models/user");
 const Project = require("../../models/project");
 
+// imports gia to redis
+const { del } = require("../../redis_config");
+
+//TELOS TA IMPORTS XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
 // na valo asinyc giati kano save kai item sto database
 const createProject = async (req, res, next) => {
   const errors = validationResult(req);
@@ -64,6 +69,12 @@ const createProject = async (req, res, next) => {
     return next(error);
     //vazoume next gia na stamatisoume to code execution tou functions mias kai exoume error
   }
+
+  // Redisxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  const userId = req.userData.userId;
+  const key_reids = userId.concat("groupby");
+  await del(key_reids);
+  // Redisxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
   res.status(201).json({ project: createdProject });
 };
