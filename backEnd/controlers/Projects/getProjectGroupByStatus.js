@@ -4,7 +4,7 @@ const Project = require("../../models/project");
 const mongoose = require("mongoose");
 // kano import ta function apo to redis
 const { get, set } = require("../../redis_config");
-const project = require("../../models/project");
+
 const getProjectGroupByStatus = async (req, res, next) => {
   // to perno to user id apo to auth middleware mias kai to sigkerkimeno controler einai se protected route
   const userId = req.userData.userId;

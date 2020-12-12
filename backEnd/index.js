@@ -29,6 +29,8 @@ mongoose
     console.log(err);
   });
 
+//SIMADIKO !!!!!!!!!!!!! na kano initialize to REDIS kai mongo database prin ksekiniso to app !!!
+
 // prepei na kano  install kai to mongoDb ektos apo to mongoose
 // GIA TO DB PREPEI NA TREKSO PROTA TO DOCKER CONTAINER ME :
 // docker run -d -p 27017:27017 --name my-mongo mongo
