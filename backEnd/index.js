@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const app = require("./app");
+// kano import to redis client
+const { client } = require("./redis_config");
 
 mongoose
   .connect("mongodb://localhost:27017/my_database", {
@@ -9,6 +11,16 @@ mongoose
   })
   .then(() => {
     console.log("connected DB");
+    // prin kano connect to app thelo na sindetho kai sto redis
+    client.on("connect", () => {
+      console.log("Redis client connected");
+    });
+
+    client.on("error", (error) => {
+      console.log(error);
+    });
+    console.log("redis is working");
+    // kai mono an to redis kai to mongo einai connected thelo na kano start to app
     console.log("app is running on port 5000");
     return app.listen(5000);
   })
@@ -28,3 +40,9 @@ mongoose
 // sto contorlers folder exo tin logiki/methods pou ektelite otan pigeno se kapio route
 
 // trexo ta test apla grafodas npm run test
+
+// REDDIS getting a redis container similar to the one i have for mongo db
+
+// docker run -d --name some-redis -p 6379:6379 redis
+
+// an theolo na aferso to redis diagrafo to redis_config file kai meta edo pera vgazo to import statement kai ta 2 client.on episeis prepei na afereso kai olo to logic gia to redis prosto paron to exo tora mono sto getProjectsGroupByStatement
