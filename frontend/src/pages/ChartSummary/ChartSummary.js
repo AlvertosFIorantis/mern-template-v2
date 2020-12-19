@@ -3,17 +3,19 @@ import { connect } from "react-redux";
 import "./ChartSummary.css";
 import { GetStatsGroupByStatus } from "../../_actions/actions/ChartSummary/GetStatsGroupBySatus";
 
+import BarChart from "../../components/Charts/BarChart";
+
 function ChartSummary(props) {
   useEffect(() => {
     props.GetStatsGroupByStatus();
   }, []);
 
-  return <div>Hellooooooooooooooooooooooooooooooo</div>;
+  return <BarChart data={props.GetStatsGroupByStatusData} />;
 }
 
 const mapStateToProps = (state) => {
   return {
-    GetStatsGroupByStatus: state.chartSummary.statsGroupyByStatus,
+    GetStatsGroupByStatusData: state.chartSummary.statsGroupyByStatus,
   };
 };
 
