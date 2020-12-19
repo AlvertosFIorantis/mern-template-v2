@@ -42,6 +42,13 @@ export default function Navbar() {
               <span className="link-text">dashboard</span>
             </NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink to="/chartSummary" exact className="nav-link">
+              <Settings className="nav-link-icons" />
+              {/* apo ti stigmi pou xrisimopio custom svg gia icon prepei na peraos to idio class pou exo iconContexProvider kai afora ola ta ala icons pou exo kanei import apo to react-icon */}
+              <span className="link-text">Charts</span>
+            </NavLink>
+          </li>
 
           <li className="nav-item" id="themeButton">
             <NavLink to="/logout" exact className="nav-link">
