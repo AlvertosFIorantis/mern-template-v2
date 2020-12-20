@@ -1,5 +1,5 @@
 import React from "react";
-import { Bar } from "react-chartjs-2";
+import { Polar } from "react-chartjs-2";
 
 // an exo parapano values sto array diladi ala idi prject that exo aftomata kai ala xromata gia na ta xrisimopio
 const staticListofColors = [
@@ -10,7 +10,7 @@ const staticListofColors = [
   "#c45850",
 ];
 
-function BarChart(props) {
+function PolarAreaChart(props) {
   const ArrayLabels = [].concat(...props.data.map((x) => x._id));
 
   const ArrayData = [].concat(...props.data.map((x) => x.count));
@@ -40,7 +40,7 @@ function BarChart(props) {
   const options = {
     title: {
       display: true,
-      text: "Bar Chart",
+      text: "PolarArea Chart",
     },
     scales: {
       yAxes: [
@@ -57,7 +57,7 @@ function BarChart(props) {
     responsive: true,
     maintainAspectRatio: true,
   };
-  return <Bar data={data} options={options} />;
+  return <Polar data={data} options={options} />;
 }
 
-export default BarChart;
+export default PolarAreaChart;

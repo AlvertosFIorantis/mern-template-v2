@@ -94,3 +94,5 @@ export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));
 // olo to test kai ta comments ine sto integrationTest.test.js file
 
 // NOTE: an thelo na vlepo to console log apo ta tests ektelo npm run test -- --silent=false adi gia npm test
+
+// prepei na kano install  me npm install --save react-chartjs-2 chart.js
