@@ -58,7 +58,7 @@ function Dashboard(props) {
   };
 
   return (
-    <div className="wrapper">
+    <div className="wrapper" data-test="Dashboard">
       <Modal
         open={isOpen}
         onClose={onClosingModalHandler}

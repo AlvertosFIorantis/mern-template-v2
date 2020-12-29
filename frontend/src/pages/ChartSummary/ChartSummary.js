@@ -14,7 +14,7 @@ function ChartSummary(props) {
   }, []);
 
   return (
-    <div className="container__grid">
+    <div className="container__grid" data-test="ChartSummary">
       <div className="box">
         <BarChart data={props.GetStatsGroupByStatusData} />
       </div>
