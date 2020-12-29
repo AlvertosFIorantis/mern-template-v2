@@ -74,7 +74,7 @@ it("Checking that the response returns a token", async () => {
     email: "test@test.com",
     password: "password",
   });
-  console.log("response: ", response.body.token);
+  // console.log("response: ", response.body.token);
   expect(response.body.token);
 });
 
