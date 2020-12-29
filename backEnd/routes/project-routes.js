@@ -26,6 +26,6 @@ router.get("/myprojects", checkAuth, getProjects);
 router.get("/project/:projectid", checkAuth, deleteProject);
 
 // afto to route eain gia to aggegation
-router.get("/statsGroupyByStatus", checkAuth, getProjectGroupByStatus);
+router.get("/", checkAuth, getProjectGroupByStatus);
 
 module.exports = router;
