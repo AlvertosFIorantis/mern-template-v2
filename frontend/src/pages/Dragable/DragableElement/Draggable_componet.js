@@ -5,7 +5,7 @@ function Draggable_componet(props) {
   useEffect(() => {
     const target = myComponent.current;
     let main = document.getElementById("main");
-    let div1 = document.getElementById("1");
+    let div1 = document.getElementById(`${props.id}`);
     console.log("main", main.offsetHeight);
     console.log("div1", div1.offsetHeight);
     if (!target) {

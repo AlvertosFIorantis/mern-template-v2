@@ -9,6 +9,7 @@ const HttpError = require("./error/http-error");
 const usersRoutes = require("./routes/users-routes");
 const itemsRoutes = require("./routes/item-routes");
 const projectRoutes = require("./routes/project-routes");
+const dragableDivRoutes = require("./routes/dragableDiv_routes");
 const cors = require("cors");
 
 const app = express();
@@ -41,6 +42,9 @@ app.use("/api/users", usersRoutes);
 
 // ftiaxno ena diko mou endopoint gia na ta projects Routes
 app.use("/api/projects", projectRoutes);
+
+// ftiaxno endpoint gia ta Dragable Divs routes
+app.use("/api/dragabledivs", dragableDivRoutes);
 //############################
 //gia test dimiourgo ena protected route
 const checkAuth = require("./middleware/check-auth");
@@ -49,6 +53,7 @@ app.use(checkAuth);
 app.get("/test_protected_route", (req, res) => {
   return res.json({ message: "protected route" });
 });
+
 //###########################
 
 //#####################################

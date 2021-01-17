@@ -11,6 +11,10 @@ const userSchema = new Schema({
 
   // gia na ftiakso to connection metaksi userk ai item oste ba exo gia kathe user ola ta items pou eftiakse kai to vazo mesa se array me to [] giro apo to object giati ena user borei na exei multiple items (to array pou exo valei einai ta 2 blue []) !!!!!!!!!!!!
   projects: [{ type: mongoose.Types.ObjectId, required: true, ref: "Project" }],
+  dragableDivs: [
+    { type: mongoose.Types.ObjectId, required: true, ref: "DragableDiv" },
+  ],
+  // to xraizome afto gia look up value gia na boro na virsko sto dragableDivs collection kai na ta exo mesa sto user opos exo kia gia ta projects
 });
 
 userSchema.plugin(uniqueValidator);

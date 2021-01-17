@@ -2,19 +2,12 @@ import React, { useState, useEffect } from "react";
 import "./Dragable.css";
 import Draggable_componet from "./DragableElement/Draggable_componet";
 import Line from "./DragableElement/Line";
+import { connect } from "react-redux";
+import { createdragablediv } from "../../_actions/actions/Dragable/createDragableDiv";
+import { GetDragableDivs } from "../../_actions/actions/Dragable/getDragableDivs";
+import { saveDragableDivs } from "../../_actions/actions/Dragable/saveDragableDivs";
 
-export default function Dragable() {
-  const [myboxes, setMyBoxes] = useState([
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-    {
-      id: 3,
-    },
-  ]);
+function Dragable(props) {
   const [connectionArray, setConnectionArray] = useState([]);
   const [startConnectionState, setStartConnectionState] = useState("");
   const [endConnectionState, setEndConnectionState] = useState("");
@@ -44,18 +37,11 @@ export default function Dragable() {
   };
 
   const CreateDivHandler = () => {
-    let arrayLength = myboxes.length;
-    console.log(arrayLength);
-    const newBox = new Object();
-    newBox.id = arrayLength + 1;
-    setMyBoxes((prevState) => {
-      let state = JSON.parse(JSON.stringify(prevState));
+    props.createdragablediv();
+  };
 
-      state.push(newBox);
-      console.log("state", state);
-
-      return state;
-    });
+  const SaveDragableDivs = () => {
+    props.saveDragableDivs();
   };
 
   useEffect(() => {
@@ -74,12 +60,20 @@ export default function Dragable() {
       return state.filter(onlyUnique);
     });
   }, [endConnectionState]);
+
+  useEffect(() => {
+    console.log("COMPONETE LOADED");
+    props.GetDragableDivs();
+  }, []);
   return (
     <div className="dragable_container">
       <div className="glass">
         <div className="sidePanelDragable">
           <button className="buttonDragable" onClick={CreateDivHandler}>
             Create Div
+          </button>
+          <button className="buttonDragable" onClick={SaveDragableDivs}>
+            Save Progress
           </button>
         </div>
         <div className="DragableArea" id="main">
@@ -93,12 +87,13 @@ export default function Dragable() {
             />
             // an xrisimoipio to dragLine compoent prpepe ina exo StartingRef adi gia Start
           ))}
-          {myboxes.map((box) => (
+          {props.dragableDivs.map((box) => (
             <Draggable_componet
               StartConnection={StartConnectionHelper}
               EndConnection={EndConnectionHelper}
               setMyBoxesHelper={setMyBoxesHelper}
-              id={box.id}
+              id={box._id}
+              key={box._id}
             />
             // an xrisimoipio to dragLine compoent prpepe ina exo StartingRef adi gia Start
           ))}
@@ -107,3 +102,17 @@ export default function Dragable() {
     </div>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    dragableDivs: state.Dragable.dragableDivs,
+  };
+};
+
+const mapDispatchToProps = {
+  createdragablediv: createdragablediv,
+  GetDragableDivs: GetDragableDivs,
+  saveDragableDivs: saveDragableDivs,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dragable);
