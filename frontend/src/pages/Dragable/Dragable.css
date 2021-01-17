@@ -1,0 +1,102 @@
+.dragable_container {
+  min-height: 100vh;
+  background: linear-gradient(to right top, #0c2835, #6cdbeb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glass {
+  background: white;
+  min-height: 80vh;
+  width: 70%;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+  border-radius: 2rem;
+  z-index: 2;
+  backdrop-filter: blur(2rem);
+  display: flex;
+}
+
+.sidePanelDragable {
+  flex: 1;
+  /* thelo to sideplane na einai to 33% tou parent container gia afto vazo edo 1 kai sto dragable area vazo 2 giati etsi simein oti afto to side panel eiani 1 / 2+1  */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+  border-radius: 2rem 0rem 0rem 2rem;
+}
+
+.DragableArea {
+  flex: 2;
+  /* thelo afto to area na einai 2 fores megalitero tou side pannel area 66% tou container */
+  position: relative;
+  /* thelo to position relatvie gia ta dragable divs */
+}
+
+/* xxxxxxxxxxxxxx Dragable Divs xxxxxxxxxxxxxxxxxxxxxx */
+
+.line {
+  position: absolute;
+  width: 1px;
+  background-color: red;
+}
+
+.dragableDiv {
+  border: 1px solid #368abb;
+  background-color: #43a4dc;
+  position: absolute;
+  cursor: move;
+  width: 200px;
+  height: 200px;
+  left: 20px;
+  top: 20px;
+  /* gia na exei ta velakia otan kano drag to element */
+}
+.dragableDiv:after {
+  content: no-close-quote;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: black;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  margin-left: -2px;
+  margin-top: -2px;
+}
+
+.buttonDragable {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #6cdbeb;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.buttonDragable:hover {
+  background-color: #6cdbeb;
+}
+
+.buttonDragable:active {
+  background-color: #6cdbeb;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}

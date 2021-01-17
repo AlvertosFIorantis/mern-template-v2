@@ -5,6 +5,7 @@ import HomePage from "./pages/dummy_pages/HomePage";
 import SignupLoginForm from "./pages/SignupLoginForm/SignupLoginForm";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import ChartSummary from "./pages/ChartSummary/ChartSummary";
+import Dragable from "./pages/Dragable/Dragable";
 import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 // to wihtRouter to thelo gia na exo access sto props.history kai na boro na to peraso san aargumetn sto action !!!
@@ -53,6 +54,7 @@ function App(props) {
             component={auth_check(ChartSummary)}
           />
           {/* <Route exact path="/test" component={user_test_page} /> */}
+          <Route exact path="/dragable" component={auth_check(Dragable)} />
           <Route path="*" component={() => "404 NOT FOUND"} />
         </Switch>
       </div>
