@@ -16,11 +16,21 @@ export const saveDragableDivs = () => async (dispatch, getState) => {
       };
       return newDiv;
     });
-    console.log("DIVSSSSSSSSSSS", ...updated_array);
+
+    const responseData = await axios({
+      method: "PATCH",
+      url: "http://localhost:5000/api/dragabledivs/savedragabledivs",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.token,
+      },
+      data: { updated_array: updated_array },
+    });
+    console.log("DIVSSSSSSSSSSS", responseData.data.updated_array);
     dispatch({
       type: SAVE_DRAGABLEDIVS,
       // boro na peraso san payload pragmata pou perno apo to backend
-      payload: [...updated_array],
+      payload: [...responseData.data.updated_array],
     });
   } catch (err) {
     console.log("my projects error:...", err);

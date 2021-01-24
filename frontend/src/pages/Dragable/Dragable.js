@@ -94,6 +94,8 @@ function Dragable(props) {
               setMyBoxesHelper={setMyBoxesHelper}
               id={box._id}
               key={box._id}
+              XCoordinates={box.XCoordinates}
+              YCoordinates={box.YCoordinates}
             />
             // an xrisimoipio to dragLine compoent prpepe ina exo StartingRef adi gia Start
           ))}

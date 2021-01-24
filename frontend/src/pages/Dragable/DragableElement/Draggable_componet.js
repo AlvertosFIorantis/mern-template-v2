@@ -8,6 +8,10 @@ function Draggable_componet(props) {
     let div1 = document.getElementById(`${props.id}`);
     console.log("main", main.offsetHeight);
     console.log("div1", div1.offsetHeight);
+    // extra part to put the divs in their ineital position based on the value they had when they were saved
+    div1.style.left = props.XCoordinates + "px";
+    div1.style.top = props.YCoordinates + "px";
+    // extra part to put the divs in their ineital position based on the value they had when they were saved
     if (!target) {
       return;
     }

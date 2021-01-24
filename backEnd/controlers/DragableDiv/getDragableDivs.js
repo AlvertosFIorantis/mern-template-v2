@@ -32,7 +32,7 @@ const getDragableDivs = async (req, res, next) => {
         const finalDiv = {
           _id: dragabledivs._id,
           XCoordinates: dragabledivs.XCoordinates,
-          YCoordinates: dragabledivs.XCoordinates,
+          YCoordinates: dragabledivs.YCoordinates,
         };
         return finalDiv;
       }
