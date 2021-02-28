@@ -317,7 +317,8 @@ export function SignupLoginForm(props) {
                   type="username"
                   className="user-input"
                   onChange={emailHandler}
-                  placeholder={email}
+                  placeholder="email"
+                  value={email}
                 />
               </div>
 
@@ -326,7 +327,8 @@ export function SignupLoginForm(props) {
                 <input
                   type={showPassword ? "text" : "password"}
                   className="pass-input"
-                  placeholder={password}
+                  placeholder="password"
+                  value={password}
                   onChange={validatePassword}
                 />
                 <span
@@ -362,7 +364,8 @@ export function SignupLoginForm(props) {
                   type="username"
                   className="user-input"
                   onChange={emailHandler}
-                  placeholder={email}
+                  placeholder="email"
+                  value={email}
                 />
               </div>
 
@@ -371,7 +374,8 @@ export function SignupLoginForm(props) {
                 <input
                   type={showPassword ? "text" : "password"}
                   className="pass-input"
-                  placeholder={password}
+                  placeholder="password"
+                  value={password}
                   onChange={validatePassword}
                 />
                 <span
@@ -390,7 +394,8 @@ export function SignupLoginForm(props) {
                 <input
                   type={showPassword ? "text" : "password"}
                   className="pass-input"
-                  placeholder={ConPassword}
+                  placeholder="confirm password"
+                  value={ConPassword}
                   onChange={ConfirmPasswordHandler}
                 />
                 <span
