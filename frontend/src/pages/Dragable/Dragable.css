@@ -4,6 +4,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  /* afto to exo gia to draggable divs oste na min exo to blue pragma otan o user kanei kati drag */
+  user-select: none;
 }
 
 .glass {

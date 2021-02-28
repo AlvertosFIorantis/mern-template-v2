@@ -14,7 +14,7 @@ function Dashboard(props) {
   //starte for the inputs on the modal
   const [projectCategory, setProjectCategory] = useState("internal-project");
 
-  const [projectName, setProjectName] = useState("project Name");
+  const [projectName, setProjectName] = useState("");
 
   const [projectStatus, setProjectStatus] = useState("in-work");
 

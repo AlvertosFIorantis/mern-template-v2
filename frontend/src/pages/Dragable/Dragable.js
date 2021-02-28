@@ -60,10 +60,12 @@ function Dragable(props) {
       return state.filter(onlyUnique);
     });
   }, [endConnectionState]);
+  // mipos edo adi na exo mono to endconnectionState malon prepei na valo kai to start connection state dne eimai sigouros
 
   useEffect(() => {
     console.log("COMPONETE LOADED");
     props.GetDragableDivs();
+    // edo kano load ta divs apo to server
   }, []);
   return (
     <div className="dragable_container">

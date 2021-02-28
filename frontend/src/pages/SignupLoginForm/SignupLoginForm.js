@@ -16,9 +16,9 @@ import HumanIcon from "../../icons/HumanIcon";
 import PassportValidation from "../../components/PassportValidation";
 
 export function SignupLoginForm(props) {
-  const [email, setEmail] = useState("email");
-  const [password, setPassword] = useState("password");
-  const [ConPassword, setConPassword] = useState("confirm password");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [ConPassword, setConPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [uploadedImage, setUploadedImage] = useState();
   const [showCssClasses, setShowCssClasses] = useState(false);
@@ -34,20 +34,11 @@ export function SignupLoginForm(props) {
     setEmail(e.target.value);
   };
 
-  useEffect(() => {
-    if (email === "") {
-      setEmail("email");
-    }
-  }, [email]);
-
   const ConfirmPasswordHandler = (e) => {
     setConPassword(e.target.value);
   };
 
   useEffect(() => {
-    if (ConPassword === "") {
-      setConPassword("confirm password");
-    }
     if (ConPassword === password) {
       setMatchingPasswords(true);
     }
@@ -58,9 +49,9 @@ export function SignupLoginForm(props) {
 
   // thelo na trexei to use effect kathe fora pou alazei to to password state epidi to password den ginete re-render den thelo na trexei mesa sto idio function pou kano set to password
   useEffect(() => {
-    if (password === "") {
-      setPassword("password");
-    }
+    // if (password === "") {
+    //   setPassword("password");
+    // }
     console.log("Checking if the password match the minimum requirements");
     setValidations([
       password.length > 5,
@@ -87,16 +78,18 @@ export function SignupLoginForm(props) {
     if (showCssClasses) {
       setShowCssClasses(false);
       setShowCssClassesTimeout(false);
-      setEmail("email");
-      setPassword("password");
+      setEmail("");
+      setPassword("");
+      setConPassword("");
     }
     if (!showCssClasses) {
       setShowCssClasses(true);
       setTimeout(function () {
         setShowCssClassesTimeout(true);
       }, 600);
-      setEmail("email");
-      setPassword("password");
+      setEmail("");
+      setPassword("");
+      setConPassword("");
     }
   };
 
@@ -195,7 +188,8 @@ export function SignupLoginForm(props) {
                   type="username"
                   className="user-input"
                   onChange={emailHandler}
-                  placeholder={email}
+                  placeholder="email"
+                  value={email}
                 />
               </div>
 
@@ -204,7 +198,8 @@ export function SignupLoginForm(props) {
                 <input
                   type={showPassword ? "text" : "password"}
                   className="pass-input"
-                  placeholder={password}
+                  placeholder="password"
+                  value={password}
                   onChange={validatePassword}
                 />
                 <span
@@ -240,7 +235,8 @@ export function SignupLoginForm(props) {
                   type="username"
                   className="user-input"
                   onChange={emailHandler}
-                  placeholder={email}
+                  placeholder="email"
+                  value={email}
                 />
               </div>
 
@@ -249,7 +245,8 @@ export function SignupLoginForm(props) {
                 <input
                   type={showPassword ? "text" : "password"}
                   className="pass-input"
-                  placeholder={password}
+                  placeholder="password"
+                  value={password}
                   onChange={validatePassword}
                 />
                 <span
@@ -267,7 +264,8 @@ export function SignupLoginForm(props) {
                 <input
                   type={showPassword ? "text" : "password"}
                   className="pass-input"
-                  placeholder={ConPassword}
+                  placeholder="confirm password"
+                  value={ConPassword}
                   onChange={ConfirmPasswordHandler}
                 />
                 <span

@@ -37,8 +37,9 @@ function Modal(props) {
             <label>Project Name</label>
             <input
               className="inputGroup__textfield"
-              placeholder={projectName}
+              placeholder="project name"
               onChange={ProjectNameHandler}
+              value={projectName}
             />
           </div>
           {/* <div className="inputGroup inputGroup2">
